@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1555080527 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\main.cpp
+	<SDL/SDL.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<iostream>
+
