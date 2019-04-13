@@ -1,6 +1,8 @@
 #include<SDL/SDL.h>
 #include<GL/gl.h>
 #include<GL/glu.h>
+#include "Column.h"
+#include "Pipe.h"
 
 float playerPosY = 1.0;
 float moveSpeed = 1.0;
@@ -9,56 +11,6 @@ const float PLAYER_LEFT_X = 1.2;
 const float PLAYER_RIGHT_X = 2.2;
 const float PLAYER_TOP_Y = -1.2;
 const float PLAYER_BOTTOM_Y = -2.2;
-
-class Column {
-public:
-    float leftX;
-    float rightX;
-    float topY;
-    float bottomY;
-
-    Column() {};
-
-    Column( float leftX, float rightX, float topY, float bottomY ) {
-        this->leftX = leftX;
-        this->rightX = rightX;
-        this->topY = topY;
-        this->bottomY = bottomY;
-    };
-
-    void setVertices(float leftX, float rightX, float topY, float bottomY) {
-        this->leftX = leftX;
-        this->rightX = rightX;
-        this->topY = topY;
-        this->bottomY = bottomY;
-    };
-
-    void drawColumn() {
-        glColor3f(0.2, 1.0, 0.3);
-        glBegin(GL_QUADS);
-            glVertex3f(leftX - moveSpeed, topY, -5.0);
-            glVertex3f(rightX - moveSpeed, topY, -5.0);
-            glVertex3f(rightX - moveSpeed, bottomY, -5.0);
-            glVertex3f(leftX - moveSpeed, bottomY, -5.0);
-        glEnd();
-    };
-};
-
-class Pipe {
-public:
-    Column top;
-    Column bottom;
-
-    Pipe(float distanceBetween) {
-        top.setVertices(4.2, 6.2, 4.2 + distanceBetween, -1.2 + distanceBetween);
-        bottom.setVertices(4.2, 6.2, -1.2 - distanceBetween, -5.2 - distanceBetween);
-    };
-
-    void drawColumns() {
-        top.drawColumn();
-        bottom.drawColumn();
-    };
-};
 
 void init() {
     glClearColor(0.1, 0.6, 0.4, 1.0);
@@ -96,7 +48,7 @@ void display(Pipe &pipe) {
     glLoadIdentity();
     glTranslatef(-1, 0, -5);
     drawPlayer();
-    pipe.drawColumns();
+    pipe.drawColumns(moveSpeed);
     if((pipe.bottom.leftX - moveSpeed < PLAYER_RIGHT_X && pipe.bottom.rightX - moveSpeed > PLAYER_LEFT_X)
     && (PLAYER_BOTTOM_Y + playerPosY < pipe.bottom.topY || PLAYER_TOP_Y + playerPosY > pipe.top.bottomY)) {
         gameOver();
