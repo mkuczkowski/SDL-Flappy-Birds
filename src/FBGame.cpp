@@ -1,8 +1,8 @@
 #include "Column.h"
 #include "Pipe.h"
-#include<SDL/SDL.h>
-#include<GL/gl.h>
-#include<GL/glu.h>
+#include <SDL/SDL.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
 #include "FBGame.h"
 
 FBGame::FBGame() {
@@ -13,10 +13,17 @@ FBGame::FBGame() {
     playerRightX = 2.2;
     playerTopY = -1.2;
     playerBottomY = -2.2;
-    pipe.setupColumns(1.5);
 }
 
 FBGame::~FBGame() { }
+
+float FBGame::getRandomValue(float minValue, float maxValue) {
+    return minValue + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(maxValue-minValue)));
+}
+
+void FBGame::assignDistance(float distance) {
+    pipe.setupColumns(distance);
+}
 
 void FBGame::initialize() {
     glClearColor(0.1, 0.6, 0.4, 1.0);

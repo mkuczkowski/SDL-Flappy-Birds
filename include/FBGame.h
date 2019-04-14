@@ -14,6 +14,8 @@ class FBGame
         Pipe pipe;
         FBGame();
         virtual ~FBGame();
+        float getRandomValue(float minValue, float maxValue);
+        void assignDistance(float distance);
         void initialize();
         void restart();
         void render();
