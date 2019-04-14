@@ -34,9 +34,11 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="include/Column.h" />
+		<Unit filename="include/FBGame.h" />
 		<Unit filename="include/Pipe.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Column.cpp" />
+		<Unit filename="src/FBGame.cpp" />
 		<Unit filename="src/Pipe.cpp" />
 		<Extensions>
 			<code_completion />
