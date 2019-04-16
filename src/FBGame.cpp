@@ -21,8 +21,11 @@ float FBGame::getRandomValue(float minValue, float maxValue) {
     return minValue + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(maxValue-minValue)));
 }
 
-void FBGame::assignDistance(float distance) {
-    pipe.setupColumns(distance);
+void FBGame::assignGaps() {
+    for(int i = 0; i < 4; i++) {
+        pipe[i].setupColumns(getRandomValue(1.0, 1.9), i * 3.5);
+        pipe[i].setHeight(getRandomValue(1.0, 3.5));
+    }
 }
 
 void FBGame::initialize() {
@@ -61,12 +64,15 @@ void FBGame::render() {
     glLoadIdentity();
     glTranslatef(-1, 0, -5);
     drawPlayer();
-    pipe.drawColumns(moveSpeed);
-    if((pipe.bottom.leftX - moveSpeed < playerRightX && pipe.bottom.rightX - moveSpeed > playerLeftX)
-    && (playerBottomY + playerPosY < pipe.bottom.topY || playerTopY + playerPosY > pipe.top.bottomY)) {
-        gameOver();
-    } else {
-        playerPosY -= 0.0005;
-        moveSpeed += 0.0005;
+    for(int i = 0; i < 4; i++) {
+        pipe[i].drawColumns(moveSpeed);
+        if((pipe[i].bottom.leftX - moveSpeed < playerRightX && pipe[i].bottom.rightX - moveSpeed > playerLeftX)
+        && (playerBottomY + playerPosY < pipe[i].bottom.topY || playerTopY + playerPosY > pipe[i].top.bottomY)) {
+            gameOver();
+        }
+    }
+    if(!isOver) {
+        playerPosY -= 0.0010;
+        moveSpeed += 0.0010;
     }
 }

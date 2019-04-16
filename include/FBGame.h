@@ -1,8 +1,7 @@
 #ifndef FBGAME_H
 #define FBGAME_H
 
-class FBGame
-{
+class FBGame {
     public:
         float playerLeftX;
         float playerRightX;
@@ -11,20 +10,19 @@ class FBGame
         bool isOver;
         float playerPosY;
         float moveSpeed;
-        Pipe pipe;
+        Pipe pipe[4];
         FBGame();
         virtual ~FBGame();
-        float getRandomValue(float minValue, float maxValue);
-        void assignDistance(float distance);
+        void assignGaps();
         void initialize();
         void restart();
         void render();
-
     protected:
 
     private:
         void drawPlayer();
         void gameOver();
+        float getRandomValue(float minValue, float maxValue);
 };
 
 #endif // FBGAME_H

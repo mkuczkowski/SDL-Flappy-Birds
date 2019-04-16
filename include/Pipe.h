@@ -9,7 +9,8 @@ class Pipe {
         Pipe(float distanceBetween);
         virtual ~Pipe();
         void drawColumns(float moveSpeed);
-        void setupColumns(float distanceBetween);
+        void setupColumns(float distanceBetween, float positionX);
+        void setHeight(float distanceToMove);
     protected:
 
     private:
