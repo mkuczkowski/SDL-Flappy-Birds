@@ -19,8 +19,8 @@ void Pipe::drawColumns(float moveSpeed) {
 }
 
 void Pipe::setupColumns(float distanceBetween, float positionX) {
-    top.setVertices(4.2 + positionX, 6.2 + positionX, 4.2 + distanceBetween, -1.2 + distanceBetween);
-    bottom.setVertices(4.2 + positionX, 6.2 + positionX, -1.2 - distanceBetween, -5.2 - distanceBetween);
+    top.setVertices(4.2 + positionX, 6.2 + positionX, 7.2 + distanceBetween, -1.2 + distanceBetween);
+    bottom.setVertices(4.2 + positionX, 6.2 + positionX, -1.2 - distanceBetween, -9.2 - distanceBetween);
 }
 
 void Pipe::setHeight(float distanceToMove) {

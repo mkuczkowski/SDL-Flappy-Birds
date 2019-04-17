@@ -9,10 +9,10 @@ FBGame::FBGame() {
     isOver = false;
     moveSpeed = 1.0;
     playerPosY = 1.0;
-    playerLeftX = 1.2;
-    playerRightX = 2.2;
+    playerLeftX = -1.2;
+    playerRightX = -1.5;
     playerTopY = -1.2;
-    playerBottomY = -2.2;
+    playerBottomY = -1.5;
 }
 
 FBGame::~FBGame() { }
@@ -22,9 +22,9 @@ float FBGame::getRandomValue(float minValue, float maxValue) {
 }
 
 void FBGame::assignGaps() {
-    for(int i = 0; i < 4; i++) {
-        pipe[i].setupColumns(getRandomValue(1.0, 1.9), i * 3.5);
-        pipe[i].setHeight(getRandomValue(1.0, 3.5));
+    for(int i = 0; i < 100; i++) {
+        pipes[i].setupColumns(getRandomValue(1.0, 1.9), i * 3.9);
+        pipes[i].setHeight(getRandomValue(-1.5, 3.5));
     }
 }
 
@@ -59,20 +59,28 @@ void FBGame::restart() {
     glClearColor(0.1, 0.6, 0.4, 1.0);
 }
 
+void FBGame::checkForCollision(Pipe pipe[]) {
+    for(int i = 0; i < 100; i++) {
+        pipe[i].drawColumns(moveSpeed);
+        if((pipe[i].bottom.leftX - moveSpeed < playerLeftX && pipe[i].bottom.rightX - moveSpeed > playerLeftX)
+        && (playerBottomY + playerPosY < pipe[i].bottom.topY || playerTopY + playerPosY > pipe[i].top.bottomY)) {
+            gameOver();
+        }
+    }
+}
+
+void FBGame::moveAvailableGameObjects() {
+    if(!isOver) {
+        playerPosY -= 0.0015;
+        moveSpeed += 0.0015;
+    }
+}
+
 void FBGame::render() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
     glTranslatef(-1, 0, -5);
     drawPlayer();
-    for(int i = 0; i < 4; i++) {
-        pipe[i].drawColumns(moveSpeed);
-        if((pipe[i].bottom.leftX - moveSpeed < playerRightX && pipe[i].bottom.rightX - moveSpeed > playerLeftX)
-        && (playerBottomY + playerPosY < pipe[i].bottom.topY || playerTopY + playerPosY > pipe[i].top.bottomY)) {
-            gameOver();
-        }
-    }
-    if(!isOver) {
-        playerPosY -= 0.0010;
-        moveSpeed += 0.0010;
-    }
+    checkForCollision(pipes);
+    moveAvailableGameObjects();
 }

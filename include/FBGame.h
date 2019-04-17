@@ -10,7 +10,7 @@ class FBGame {
         bool isOver;
         float playerPosY;
         float moveSpeed;
-        Pipe pipe[4];
+        Pipe pipes[100];
         FBGame();
         virtual ~FBGame();
         void assignGaps();
@@ -23,6 +23,8 @@ class FBGame {
         void drawPlayer();
         void gameOver();
         float getRandomValue(float minValue, float maxValue);
+        void checkForCollision(Pipe pipe[]);
+        void moveAvailableGameObjects();
 };
 
 #endif // FBGAME_H
