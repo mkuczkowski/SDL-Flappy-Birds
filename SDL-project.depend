@@ -9,26 +9,26 @@
 	<stdlib.h>
 	<time.h>
 
-1555198348 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\column.cpp
+1555699525 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\column.cpp
 	"Column.h"
 	<SDL/SDL.h>
 	<GL/gl.h>
 	<GL/glu.h>
 
-1555198544 c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\include\column.h
+1555699367 c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\include\column.h
 
-1555522306 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\pipe.cpp
+1555699811 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\pipe.cpp
 	"Column.h"
 	"Pipe.h"
 	<SDL/SDL.h>
 	<GL/gl.h>
 	<GL/glu.h>
 
-1555521384 c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\include\pipe.h
+1555699781 c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\include\pipe.h
 
-1555523279 c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\include\fbgame.h
+1555700000 c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\include\fbgame.h
 
-1555521461 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\fbgame.cpp
+1555699865 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\fbgame.cpp
 	"Column.h"
 	"Pipe.h"
 	<SDL/SDL.h>

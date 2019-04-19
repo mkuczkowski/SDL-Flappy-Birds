@@ -6,15 +6,17 @@ class Column {
         Column();
         Column(float leftX, float rightX, float topY, float bottomY);
         virtual ~Column();
+        float getLeftX();
+        float getRightX();
+        float getTopY();
+        float getBottomY();
+        void setVertices(float leftX, float rightX, float topY, float bottomY);
+        void drawColumn(float moveSpeed);
+    private:
         float leftX;
         float rightX;
         float topY;
         float bottomY;
-        void setVertices(float leftX, float rightX, float topY, float bottomY);
-        void drawColumn(float moveSpeed);
-    protected:
-
-    private:
 };
 
 #endif // COLUMN_H

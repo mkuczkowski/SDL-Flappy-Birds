@@ -3,23 +3,21 @@
 
 class FBGame {
     public:
-        float playerLeftX;
-        float playerRightX;
-        float playerTopY;
-        float playerBottomY;
         bool isOver;
         float playerPosY;
-        float moveSpeed;
-        Pipe pipes[100];
         FBGame();
         virtual ~FBGame();
         void assignGaps();
         void initialize();
         void restart();
         void render();
-    protected:
-
     private:
+        Pipe pipes[100];
+        float playerLeftX;
+        float playerRightX;
+        float playerTopY;
+        float playerBottomY;
+        float moveSpeed;
         void drawPlayer();
         void gameOver();
         float getRandomValue(float minValue, float maxValue);

@@ -30,3 +30,11 @@ void Column::drawColumn(float moveSpeed) {
         glVertex3f(leftX - moveSpeed, bottomY, -5.0);
     glEnd();
 }
+
+float Column::getLeftX() { return leftX; }
+
+float Column::getRightX() { return rightX; }
+
+float Column::getBottomY() { return bottomY; }
+
+float Column::getTopY() { return topY; }

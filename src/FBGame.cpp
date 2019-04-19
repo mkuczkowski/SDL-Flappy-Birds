@@ -62,8 +62,8 @@ void FBGame::restart() {
 void FBGame::checkForCollision(Pipe pipe[]) {
     for(int i = 0; i < 100; i++) {
         pipe[i].drawColumns(moveSpeed);
-        if((pipe[i].bottom.leftX - moveSpeed < playerLeftX && pipe[i].bottom.rightX - moveSpeed > playerLeftX)
-        && (playerBottomY + playerPosY < pipe[i].bottom.topY || playerTopY + playerPosY > pipe[i].top.bottomY)) {
+        if((pipe[i].getBottom().getLeftX() - moveSpeed < playerLeftX && pipe[i].getBottom().getRightX() - moveSpeed > playerLeftX)
+        && (playerBottomY + playerPosY < pipe[i].getBottom().getTopY() || playerTopY + playerPosY > pipe[i].getTop().getBottomY())) {
             gameOver();
         }
     }

@@ -24,6 +24,10 @@ void Pipe::setupColumns(float distanceBetween, float positionX) {
 }
 
 void Pipe::setHeight(float distanceToMove) {
-    top.setVertices(top.leftX, top.rightX, top.topY + distanceToMove, top.bottomY + distanceToMove);
-    bottom.setVertices(bottom.leftX, bottom.rightX, bottom.topY + distanceToMove, bottom.bottomY + distanceToMove);
+    top.setVertices(top.getLeftX(), top.getRightX(), top.getTopY() + distanceToMove, top.getBottomY() + distanceToMove);
+    bottom.setVertices(bottom.getLeftX(), bottom.getRightX(), bottom.getTopY() + distanceToMove, bottom.getBottomY() + distanceToMove);
 }
+
+Column Pipe::getTop() { return top; }
+
+Column Pipe::getBottom() { return bottom; }

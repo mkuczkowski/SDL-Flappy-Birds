@@ -3,17 +3,17 @@
 
 class Pipe {
     public:
-        Column top;
-        Column bottom;
         Pipe();
         Pipe(float distanceBetween);
         virtual ~Pipe();
+        Column getTop();
+        Column getBottom();
         void drawColumns(float moveSpeed);
         void setupColumns(float distanceBetween, float positionX);
         void setHeight(float distanceToMove);
-    protected:
-
     private:
+        Column top;
+        Column bottom;
 };
 
 #endif // PIPE_H
