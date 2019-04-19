@@ -13,6 +13,7 @@ FBGame::FBGame() {
     playerRightX = -1.5;
     playerTopY = -1.2;
     playerBottomY = -1.5;
+    jumpHeight = 0.8;
 }
 
 FBGame::~FBGame() { }
@@ -84,3 +85,5 @@ void FBGame::render() {
     checkForCollision(pipes);
     moveAvailableGameObjects();
 }
+
+float FBGame::getJumpHeight() { return jumpHeight; }

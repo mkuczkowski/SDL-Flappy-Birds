@@ -19,11 +19,16 @@ int main(int argc, char* args[]) {
         while (SDL_PollEvent(&event)) {
             switch(event.type) {
                 case SDL_KEYDOWN:
-                    if(event.key.keysym.sym == SDLK_SPACE && !game.isOver) game.playerPosY += 0.8;
+                    if(event.key.keysym.sym == SDLK_SPACE && !game.isOver)
+                        game.playerPosY += game.getJumpHeight();
                     if(event.key.keysym.sym == SDLK_r) {
                         game.assignGaps();
                         game.restart();
                     }
+                    break;
+                case SDL_MOUSEBUTTONDOWN:
+                    if (event.button.button == SDL_BUTTON_LEFT && !game.isOver)
+                        game.playerPosY += game.getJumpHeight();
                     break;
                 case SDL_QUIT:
                     return 0;
