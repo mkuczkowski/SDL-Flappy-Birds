@@ -25,6 +25,7 @@ class FBGame {
         float getRandomValue(float minValue, float maxValue);
         void checkForCollision(Pipe pipe[]);
         void moveAvailableGameObjects();
+        void drawBackground();
 };
 
 #endif // FBGAME_H

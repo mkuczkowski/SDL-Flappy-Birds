@@ -30,7 +30,7 @@ void FBGame::assignGaps() {
 }
 
 void FBGame::initialize() {
-    glClearColor(0.1, 0.6, 0.4, 1.0);
+    glClearColor(0.1, 0.8, 1.0, 1.0);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluPerspective(60, 640.0/480.0, 1.0, 500.0);
@@ -39,7 +39,7 @@ void FBGame::initialize() {
 }
 
 void FBGame::drawPlayer() {
-    glColor3f(1.0, 1.0, 1.0);
+    glColor3f(1.0, 1.0, 0.0);
     glBegin(GL_QUADS);
         glVertex3f(playerLeftX, playerTopY + playerPosY, -5.0);
         glVertex3f(playerRightX, playerTopY + playerPosY, -5.0);
@@ -57,7 +57,7 @@ void FBGame::restart() {
     playerPosY = 1.0;
     moveSpeed = 1.0;
     isOver = false;
-    glClearColor(0.1, 0.6, 0.4, 1.0);
+    glClearColor(0.1, 0.8, 1.0, 1.0);
 }
 
 void FBGame::checkForCollision(Pipe pipe[]) {
@@ -77,11 +77,30 @@ void FBGame::moveAvailableGameObjects() {
     }
 }
 
+void FBGame::drawBackground() {
+    glColor3f(1.0, 0.5, 0.4);
+    glBegin(GL_QUADS);
+        glVertex3f(-9, -5, -4.9);
+        glVertex3f(10, -5, -4.9);
+        glVertex3f(10, -15, -4.9);
+        glVertex3f(-9, -15, -4.9);
+    glEnd();
+
+    glColor3f(0.0, 0.6, 0.0);
+    glBegin(GL_QUADS);
+        glVertex3f(-9, -5, -4.89);
+        glVertex3f(10, -5, -4.89);
+        glVertex3f(10, -5.2, -4.89);
+        glVertex3f(-9, -5.2, -4.89);
+    glEnd();
+}
+
 void FBGame::render() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
     glTranslatef(-1, 0, -5);
     drawPlayer();
+    drawBackground();
     checkForCollision(pipes);
     moveAvailableGameObjects();
 }
