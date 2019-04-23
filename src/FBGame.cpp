@@ -14,6 +14,7 @@ FBGame::FBGame() {
     playerTopY = -1.2;
     playerBottomY = -1.5;
     jumpHeight = 0.8;
+    playerFallVelocity = 0.0015;
 }
 
 FBGame::~FBGame() { }
@@ -46,6 +47,7 @@ void FBGame::drawPlayer() {
         glVertex3f(playerRightX, playerBottomY + playerPosY, -5.0);
         glVertex3f(playerLeftX, playerBottomY + playerPosY, -5.0);
     glEnd();
+    playerFallVelocity += 0.000003;
 }
 
 void FBGame::gameOver() {
@@ -56,6 +58,7 @@ void FBGame::gameOver() {
 void FBGame::restart() {
     playerPosY = 1.0;
     moveSpeed = 1.0;
+    playerFallVelocity = 0.0015;
     isOver = false;
     glClearColor(0.1, 0.8, 1.0, 1.0);
 }
@@ -72,7 +75,7 @@ void FBGame::checkForCollision(Pipe pipe[]) {
 
 void FBGame::moveAvailableGameObjects() {
     if(!isOver) {
-        playerPosY -= 0.0015;
+        playerPosY -= playerFallVelocity;
         moveSpeed += 0.0015;
     }
 }
@@ -105,4 +108,7 @@ void FBGame::render() {
     moveAvailableGameObjects();
 }
 
-float FBGame::getJumpHeight() { return jumpHeight; }
+void FBGame::playerJump() {
+    playerFallVelocity = 0.0015;
+    playerPosY += jumpHeight;
+}

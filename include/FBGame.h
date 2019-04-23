@@ -11,7 +11,7 @@ class FBGame {
         void initialize();
         void restart();
         void render();
-        float getJumpHeight();
+        void playerJump();
     private:
         Pipe pipes[100];
         float playerLeftX;
@@ -20,6 +20,7 @@ class FBGame {
         float playerBottomY;
         float moveSpeed;
         float jumpHeight;
+        float playerFallVelocity;
         void drawPlayer();
         void gameOver();
         float getRandomValue(float minValue, float maxValue);
