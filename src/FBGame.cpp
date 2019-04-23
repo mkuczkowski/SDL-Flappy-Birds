@@ -39,9 +39,9 @@ void FBGame::gameOver() {
 }
 
 void FBGame::restart() {
-    player.positionY = 1.0;
+    player.setPositionY(1.0);
     moveSpeed = 1.0;
-    player.fallVelocity = 0.0015;
+    player.setFallVelocity(0.0015);
     isOver = false;
     glClearColor(0.1, 0.8, 1.0, 1.0);
 }
@@ -49,8 +49,8 @@ void FBGame::restart() {
 void FBGame::checkForCollision(Pipe pipe[]) {
     for(int i = 0; i < 100; i++) {
         pipe[i].drawColumns(moveSpeed);
-        if((pipe[i].getBottom().getLeftX() - moveSpeed < player.leftX && pipe[i].getBottom().getRightX() - moveSpeed > player.leftX)
-        && (player.bottomY + player.positionY < pipe[i].getBottom().getTopY() || player.topY + player.positionY > pipe[i].getTop().getBottomY())) {
+        if((pipe[i].getBottom().getLeftX() - moveSpeed < player.getLeftX() && pipe[i].getBottom().getRightX() - moveSpeed > player.getLeftX())
+        && (player.getBottomY() + player.getPositionY() < pipe[i].getBottom().getTopY() || player.getTopY() + player.getPositionY() > pipe[i].getTop().getBottomY())) {
             gameOver();
         }
     }
@@ -58,7 +58,8 @@ void FBGame::checkForCollision(Pipe pipe[]) {
 
 void FBGame::moveAvailableGameObjects() {
     if(!isOver) {
-        player.positionY -= player.fallVelocity;
+        float newPlayerPosition = player.getPositionY() - player.getFallVelocity();
+        player.setPositionY(newPlayerPosition);
         moveSpeed += 0.0015;
     }
 }

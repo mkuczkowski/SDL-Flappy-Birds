@@ -7,6 +7,15 @@ class Player {
         virtual ~Player();
         void draw();
         void jump();
+        float getLeftX();
+        float getRightX();
+        float getTopY();
+        float getBottomY();
+        float getPositionY();
+        void setPositionY(float position);
+        float getFallVelocity();
+        void setFallVelocity(float velocity);
+    private:
         float positionY;
         float leftX;
         float rightX;

@@ -30,3 +30,23 @@ void Player::jump() {
     fallVelocity = 0.0015;
     positionY += jumpHeight;
 }
+
+float Player::getLeftX() { return leftX; }
+
+float Player::getRightX() { return rightX; }
+
+float Player::getBottomY() { return bottomY; }
+
+float Player::getTopY() { return topY; }
+
+float Player::getPositionY() { return positionY; }
+
+float Player::getFallVelocity() { return fallVelocity; }
+
+void Player::setFallVelocity(float velocity) {
+    fallVelocity = velocity;
+}
+
+void Player::setPositionY(float position) {
+    positionY = position;
+}
