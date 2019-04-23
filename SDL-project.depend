@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1556040610 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\main.cpp
+1556041747 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\main.cpp
 	<SDL/SDL.h>
 	<GL/gl.h>
 	<GL/glu.h>
@@ -26,13 +26,22 @@
 
 1555699781 c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\include\pipe.h
 
-1556040807 c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\include\fbgame.h
+1556042316 c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\include\fbgame.h
 
-1555769714 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\fbgame.cpp
+1556042095 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\fbgame.cpp
 	"Column.h"
 	"Pipe.h"
+	"Player.h"
 	<SDL/SDL.h>
 	<GL/gl.h>
 	<GL/glu.h>
 	"FBGame.h"
+
+1556041766 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\player.cpp
+	"Player.h"
+	<SDL/SDL.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1556042149 c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\include\player.h
 

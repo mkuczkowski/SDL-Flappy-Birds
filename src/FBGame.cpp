@@ -1,5 +1,6 @@
 #include "Column.h"
 #include "Pipe.h"
+#include "Player.h"
 #include <SDL/SDL.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
@@ -8,13 +9,6 @@
 FBGame::FBGame() {
     isOver = false;
     moveSpeed = 1.0;
-    playerPosY = 1.0;
-    playerLeftX = -1.2;
-    playerRightX = -1.5;
-    playerTopY = -1.2;
-    playerBottomY = -1.5;
-    jumpHeight = 0.8;
-    playerFallVelocity = 0.0015;
 }
 
 FBGame::~FBGame() { }
@@ -39,26 +33,15 @@ void FBGame::initialize() {
     glEnable(GL_DEPTH_TEST);
 }
 
-void FBGame::drawPlayer() {
-    glColor3f(1.0, 1.0, 0.0);
-    glBegin(GL_QUADS);
-        glVertex3f(playerLeftX, playerTopY + playerPosY, -5.0);
-        glVertex3f(playerRightX, playerTopY + playerPosY, -5.0);
-        glVertex3f(playerRightX, playerBottomY + playerPosY, -5.0);
-        glVertex3f(playerLeftX, playerBottomY + playerPosY, -5.0);
-    glEnd();
-    playerFallVelocity += 0.000003;
-}
-
 void FBGame::gameOver() {
     glClearColor(1.0, 0.0, 0.0, 1.0);
     isOver = true;
 }
 
 void FBGame::restart() {
-    playerPosY = 1.0;
+    player.positionY = 1.0;
     moveSpeed = 1.0;
-    playerFallVelocity = 0.0015;
+    player.fallVelocity = 0.0015;
     isOver = false;
     glClearColor(0.1, 0.8, 1.0, 1.0);
 }
@@ -66,8 +49,8 @@ void FBGame::restart() {
 void FBGame::checkForCollision(Pipe pipe[]) {
     for(int i = 0; i < 100; i++) {
         pipe[i].drawColumns(moveSpeed);
-        if((pipe[i].getBottom().getLeftX() - moveSpeed < playerLeftX && pipe[i].getBottom().getRightX() - moveSpeed > playerLeftX)
-        && (playerBottomY + playerPosY < pipe[i].getBottom().getTopY() || playerTopY + playerPosY > pipe[i].getTop().getBottomY())) {
+        if((pipe[i].getBottom().getLeftX() - moveSpeed < player.leftX && pipe[i].getBottom().getRightX() - moveSpeed > player.leftX)
+        && (player.bottomY + player.positionY < pipe[i].getBottom().getTopY() || player.topY + player.positionY > pipe[i].getTop().getBottomY())) {
             gameOver();
         }
     }
@@ -75,7 +58,7 @@ void FBGame::checkForCollision(Pipe pipe[]) {
 
 void FBGame::moveAvailableGameObjects() {
     if(!isOver) {
-        playerPosY -= playerFallVelocity;
+        player.positionY -= player.fallVelocity;
         moveSpeed += 0.0015;
     }
 }
@@ -102,13 +85,8 @@ void FBGame::render() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
     glTranslatef(-1, 0, -5);
-    drawPlayer();
+    player.draw();
     drawBackground();
     checkForCollision(pipes);
     moveAvailableGameObjects();
-}
-
-void FBGame::playerJump() {
-    playerFallVelocity = 0.0015;
-    playerPosY += jumpHeight;
 }

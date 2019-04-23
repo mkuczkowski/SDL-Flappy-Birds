@@ -3,6 +3,7 @@
 #include <GL/glu.h>
 #include "Column.h"
 #include "Pipe.h"
+#include "Player.h"
 #include "FBGame.h"
 #include <stdlib.h>
 #include <time.h>
@@ -20,7 +21,7 @@ int main(int argc, char* args[]) {
             switch(event.type) {
                 case SDL_KEYDOWN:
                     if(event.key.keysym.sym == SDLK_SPACE && !game.isOver)
-                        game.playerJump();
+                        game.player.jump();
                     if(event.key.keysym.sym == SDLK_r) {
                         game.assignGaps();
                         game.restart();
@@ -28,7 +29,7 @@ int main(int argc, char* args[]) {
                     break;
                 case SDL_MOUSEBUTTONDOWN:
                     if (event.button.button == SDL_BUTTON_LEFT && !game.isOver)
-                        game.playerJump();
+                        game.player.jump();
                     break;
                 case SDL_QUIT:
                     return 0;
