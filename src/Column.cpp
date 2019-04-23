@@ -6,54 +6,52 @@
 Column::Column() {}
 
 Column::Column(float leftX, float rightX, float topY, float bottomY) {
-    this->leftX = leftX;
-    this->rightX = rightX;
-    this->topY = topY;
-    this->bottomY = bottomY;
+    setLeftX(leftX);
+    setRightX(rightX);
+    setTopY(topY);
+    setBottomY(bottomY);
 }
 
 Column::~Column() {}
 
 void Column::setVertices(float leftX, float rightX, float topY, float bottomY) {
-    this->leftX = leftX;
-    this->rightX = rightX;
-    this->topY = topY;
-    this->bottomY = bottomY;
+    setLeftX(leftX);
+    setRightX(rightX);
+    setTopY(topY);
+    setBottomY(bottomY);
 }
 
-void Column::drawColumn(float moveSpeed) {
+void Column::draw() {
     /* main */
     glColor3f(0.2, 1.0, 0.3);
     glBegin(GL_QUADS);
-        glVertex3f(leftX - moveSpeed, topY, -5.0);
-        glVertex3f(rightX - moveSpeed, topY, -5.0);
-        glVertex3f(rightX - moveSpeed, bottomY, -5.0);
-        glVertex3f(leftX - moveSpeed, bottomY, -5.0);
+        glVertex3f(getLeftX() - moveSpeed, getTopY(), -5.0);
+        glVertex3f(getRightX() - moveSpeed, getTopY(), -5.0);
+        glVertex3f(getRightX() - moveSpeed, getBottomY(), -5.0);
+        glVertex3f(getLeftX() - moveSpeed, getBottomY(), -5.0);
     glEnd();
 
     /* left-side */
     glColor3f(0.5, 0.9, 0.5);
     glBegin(GL_QUADS);
-        glVertex3f(leftX - 0.5 - moveSpeed, topY + 0.3, -5.0);
-        glVertex3f(leftX - moveSpeed, topY, -5.0);
-        glVertex3f(leftX - 0.5 - moveSpeed, bottomY + 0.3, -5.0);
-        glVertex3f(leftX - moveSpeed, bottomY, -5.0);
+        glVertex3f(getLeftX() - 0.5 - moveSpeed, getTopY() + 0.3, -5.0);
+        glVertex3f(getLeftX() - moveSpeed, getTopY(), -5.0);
+        glVertex3f(getLeftX() - 0.5 - moveSpeed, getBottomY() + 0.3, -5.0);
+        glVertex3f(getLeftX() - moveSpeed, getBottomY(), -5.0);
     glEnd();
 
     /* top */
     glColor3f(0.3, 0.8, 0.3);
     glBegin(GL_QUADS);
-        glVertex3f(leftX - 0.5 - moveSpeed, topY + 0.3, -5.0);
-        glVertex3f(leftX - moveSpeed, topY, -5.0);
-        glVertex3f(leftX - 0.5 - moveSpeed + 2, topY + 0.3, -5.0);
-        glVertex3f(leftX - moveSpeed + 2, topY, -5.0);
+        glVertex3f(getLeftX() - 0.5 - moveSpeed, getTopY() + 0.3, -5.0);
+        glVertex3f(getLeftX() - moveSpeed, getTopY(), -5.0);
+        glVertex3f(getLeftX() - 0.5 - moveSpeed + 2, getTopY() + 0.3, -5.0);
+        glVertex3f(getLeftX() - moveSpeed + 2, getTopY(), -5.0);
     glEnd();
 }
 
-float Column::getLeftX() { return leftX; }
+float Column::getMoveSpeed() { return moveSpeed; }
 
-float Column::getRightX() { return rightX; }
-
-float Column::getBottomY() { return bottomY; }
-
-float Column::getTopY() { return topY; }
+void Column::setMoveSpeed(float moveSpeed) {
+    this->moveSpeed = moveSpeed;
+}

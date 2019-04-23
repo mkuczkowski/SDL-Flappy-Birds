@@ -1,22 +1,18 @@
 #ifndef COLUMN_H
 #define COLUMN_H
+#include "Quadrangle.h"
 
-class Column {
+class Column: public Quadrangle {
     public:
         Column();
         Column(float leftX, float rightX, float topY, float bottomY);
         virtual ~Column();
-        float getLeftX();
-        float getRightX();
-        float getTopY();
-        float getBottomY();
         void setVertices(float leftX, float rightX, float topY, float bottomY);
-        void drawColumn(float moveSpeed);
+        void draw();
+        float getMoveSpeed();
+        void setMoveSpeed(float moveSpeed);
     private:
-        float leftX;
-        float rightX;
-        float topY;
-        float bottomY;
+        float moveSpeed;
 };
 
 #endif // COLUMN_H

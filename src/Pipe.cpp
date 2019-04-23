@@ -14,8 +14,10 @@ Pipe::Pipe(float distanceBetween) {
 Pipe::~Pipe() {}
 
 void Pipe::drawColumns(float moveSpeed) {
-    top.drawColumn(moveSpeed);
-    bottom.drawColumn(moveSpeed);
+    top.setMoveSpeed(moveSpeed);
+    top.draw();
+    bottom.setMoveSpeed(moveSpeed);
+    bottom.draw();
 }
 
 void Pipe::setupColumns(float distanceBetween, float positionX) {

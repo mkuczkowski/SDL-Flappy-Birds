@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1556042316 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\main.cpp
+1556052299 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\main.cpp
 	<SDL/SDL.h>
 	<GL/gl.h>
 	<GL/glu.h>
@@ -10,15 +10,16 @@
 	<stdlib.h>
 	<time.h>
 
-1555771423 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\column.cpp
+1556051145 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\column.cpp
 	"Column.h"
 	<SDL/SDL.h>
 	<GL/gl.h>
 	<GL/glu.h>
 
-1555699367 c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\include\column.h
+1556051202 c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\include\column.h
+	"Quadrangle.h"
 
-1555699811 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\pipe.cpp
+1556051187 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\pipe.cpp
 	"Column.h"
 	"Pipe.h"
 	<SDL/SDL.h>
@@ -29,7 +30,7 @@
 
 1556042316 c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\include\fbgame.h
 
-1556048503 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\fbgame.cpp
+1556049300 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\fbgame.cpp
 	"Column.h"
 	"Pipe.h"
 	"Player.h"
@@ -38,11 +39,17 @@
 	<GL/glu.h>
 	"FBGame.h"
 
-1556048526 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\player.cpp
+1556052090 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\player.cpp
 	"Player.h"
 	<SDL/SDL.h>
 	<GL/gl.h>
 	<GL/glu.h>
 
-1556048375 c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\include\player.h
+1556050574 c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\include\player.h
+	"Quadrangle.h"
+
+1556050443 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\quadrangle.cpp
+	"Quadrangle.h"
+
+1556050309 c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\include\quadrangle.h
 
