@@ -16,30 +16,11 @@ Player::Player() {
 Player::~Player() {}
 
 void Player::draw() {
-    glColor3f(1.0, 1.0, 0.0);
-    glBegin(GL_QUADS);
-        glVertex3f(getLeftX(), getTopY() + positionY, -5.0);
-        glVertex3f(getRightX(), getTopY() + positionY, -5.0);
-        glVertex3f(getRightX(), getBottomY() + positionY, -5.0);
-        glVertex3f(getLeftX(), getBottomY() + positionY, -5.0);
-    glEnd();
-
-    glColor3f(0.8, 0.8, 0.5);
-    glBegin(GL_QUADS);
-        glVertex3f(getLeftX() - 0.15, getTopY() + positionY + 0.1, -5.0);
-        glVertex3f(getLeftX(), getTopY() + positionY, -5.0);
-        glVertex3f(getLeftX(), getBottomY() + positionY, -5.0);
-        glVertex3f(getLeftX() - 0.15, getBottomY() + positionY  + 0.1, -5.0);
-    glEnd();
-
-    glColor3f(0.9, 0.9, 0.5);
-    glBegin(GL_QUADS);
-        glVertex3f(getLeftX() - 0.15, getTopY() + positionY + 0.1, -5.0);
-        glVertex3f(getRightX() - 0.15, getTopY() + positionY + 0.1, -5.0);
-        glVertex3f(getRightX(), getTopY() + positionY, -5.0);
-        glVertex3f(getLeftX(), getTopY() + positionY , -5.0);
-    glEnd();
-
+    SDLGraphics::drawQuad(1, 1, 0, getLeftX(), getRightX(), getTopY() + positionY, getBottomY() + positionY, -5);
+    SDLGraphics::drawPreciseQuad(0.8, 0.8, 0.5, getLeftX() - 0.15, getLeftX(), getTopY() + positionY + 0.1,
+                    getTopY() + positionY, getLeftX(), getLeftX() - 0.15, getBottomY() + positionY, getBottomY() + positionY + 0.1, -5);
+    SDLGraphics::drawPreciseQuad(0.9, 0.9, 0.5, getLeftX() - 0.15, getRightX() - 0.15, getTopY() + positionY + 0.1,
+                    getTopY() + positionY + 0.1, getRightX(), getLeftX(), getTopY() + positionY, getTopY() + positionY, -5);
     fallVelocity += 0.000003;
 }
 

@@ -1,8 +1,9 @@
 #ifndef PLAYER_H
 #define PLAYER_H
+#include "SDLGraphics.h"
 #include "Quadrangle.h"
 
-class Player: public Quadrangle {
+class Player: private SDLGraphics, public Quadrangle {
     public:
         Player();
         virtual ~Player();

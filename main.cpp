@@ -14,8 +14,6 @@ int main(int argc, char* args[]) {
     SDL_SetVideoMode(640, 480, 32, SDL_SWSURFACE | SDL_OPENGL);
     SDL_Event event;
     FBGame game;
-    game.initialize();
-    game.assignGaps();
     while (true) {
         while (SDL_PollEvent(&event)) {
             switch(event.type) {
@@ -23,7 +21,6 @@ int main(int argc, char* args[]) {
                     if(event.key.keysym.sym == SDLK_SPACE && !game.isOver)
                         game.player.jump();
                     if(event.key.keysym.sym == SDLK_r) {
-                        game.assignGaps();
                         game.restart();
                     }
                     break;

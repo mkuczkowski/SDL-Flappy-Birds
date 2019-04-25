@@ -38,12 +38,14 @@
 		<Unit filename="include/Pipe.h" />
 		<Unit filename="include/Player.h" />
 		<Unit filename="include/Quadrangle.h" />
+		<Unit filename="include/SDLGraphics.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Column.cpp" />
 		<Unit filename="src/FBGame.cpp" />
 		<Unit filename="src/Pipe.cpp" />
 		<Unit filename="src/Player.cpp" />
 		<Unit filename="src/Quadrangle.cpp" />
+		<Unit filename="src/SDLGraphics.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

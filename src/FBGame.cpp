@@ -9,6 +9,8 @@
 FBGame::FBGame() {
     isOver = false;
     moveSpeed = 1.0;
+    SDLGraphics::initialize();
+    assignGaps();
 }
 
 FBGame::~FBGame() { }
@@ -24,15 +26,6 @@ void FBGame::assignGaps() {
     }
 }
 
-void FBGame::initialize() {
-    glClearColor(0.1, 0.8, 1.0, 1.0);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluPerspective(60, 640.0/480.0, 1.0, 500.0);
-    glMatrixMode(GL_MODELVIEW);
-    glEnable(GL_DEPTH_TEST);
-}
-
 void FBGame::gameOver() {
     glClearColor(1.0, 0.0, 0.0, 1.0);
     isOver = true;
@@ -44,6 +37,7 @@ void FBGame::restart() {
     player.setFallVelocity(0.0015);
     isOver = false;
     glClearColor(0.1, 0.8, 1.0, 1.0);
+    assignGaps();
 }
 
 void FBGame::checkForCollision(Pipe pipe[]) {
@@ -65,35 +59,13 @@ void FBGame::moveAvailableGameObjects() {
 }
 
 void FBGame::drawBackground() {
-    glColor3f(1.0, 0.5, 0.4);
-    glBegin(GL_QUADS);
-        glVertex3f(-9, -5, -4.9);
-        glVertex3f(10, -5, -4.9);
-        glVertex3f(10, -15, -4.9);
-        glVertex3f(-9, -15, -4.9);
-    glEnd();
-
-    glColor3f(0.0, 0.6, 0.0);
-    glBegin(GL_QUADS);
-        glVertex3f(-9, -5, -4.89);
-        glVertex3f(10, -5, -4.89);
-        glVertex3f(10, -5.2, -4.89);
-        glVertex3f(-9, -5.2, -4.89);
-    glEnd();
-
-    glColor3f(0.1, 0.7, 0.1);
-    glBegin(GL_QUADS);
-        glVertex3f(-9, -4.8, -5.99);
-        glVertex3f(10, -4.8, -5.99);
-        glVertex3f(10, -8, -5.99);
-        glVertex3f(-9, -8, -5.99);
-    glEnd();
+    SDLGraphics::drawQuad(1.0, 0.5, 0.4, -9, 10, -5, -15, -4.9);
+    SDLGraphics::drawQuad(0, 0.6, 0, -9, 10, -5, -5.2, -4.89);
+    SDLGraphics::drawQuad(0.1, 0.7, 0.1, -9, 10, -4.8, -8, -5.99);
 }
 
 void FBGame::render() {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glLoadIdentity();
-    glTranslatef(-1, 0, -5);
+    SDLGraphics::renderLoop();
     player.draw();
     drawBackground();
     checkForCollision(pipes);

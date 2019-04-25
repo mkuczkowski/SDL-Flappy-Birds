@@ -1,14 +1,12 @@
 #ifndef FBGAME_H
 #define FBGAME_H
 
-class FBGame {
+class FBGame: private SDLGraphics {
     public:
         bool isOver;
         Player player;
         FBGame();
         virtual ~FBGame();
-        void assignGaps();
-        void initialize();
         void restart();
         void render();
     private:
@@ -19,6 +17,7 @@ class FBGame {
         void checkForCollision(Pipe pipe[]);
         void moveAvailableGameObjects();
         void drawBackground();
+        void assignGaps();
 };
 
 #endif // FBGAME_H

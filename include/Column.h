@@ -1,8 +1,9 @@
 #ifndef COLUMN_H
 #define COLUMN_H
+#include "SDLGraphics.h"
 #include "Quadrangle.h"
 
-class Column: public Quadrangle {
+class Column: private SDLGraphics, public Quadrangle {
     public:
         Column();
         Column(float leftX, float rightX, float topY, float bottomY);
