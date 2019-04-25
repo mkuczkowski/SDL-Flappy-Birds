@@ -8,6 +8,8 @@ SDLGraphics::SDLGraphics() {}
 SDLGraphics::~SDLGraphics() {}
 
 void SDLGraphics::initialize() {
+    SDL_Init(SDL_INIT_EVERYTHING);
+    SDL_SetVideoMode(640, 480, 32, SDL_SWSURFACE | SDL_OPENGL);
     glClearColor(0.1, 0.8, 1.0, 1.0);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();

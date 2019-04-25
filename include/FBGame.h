@@ -9,7 +9,10 @@ class FBGame: private SDLGraphics {
         virtual ~FBGame();
         void restart();
         void render();
+        SDL_Event* getEvent();
+        void quit();
     private:
+        SDL_Event event;
         Pipe pipes[100];
         float moveSpeed;
         void gameOver();

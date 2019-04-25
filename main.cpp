@@ -10,32 +10,29 @@
 
 int main(int argc, char* args[]) {
     srand (static_cast <unsigned> (time(0)));
-    SDL_Init(SDL_INIT_EVERYTHING);
-    SDL_SetVideoMode(640, 480, 32, SDL_SWSURFACE | SDL_OPENGL);
-    SDL_Event event;
     FBGame game;
     while (true) {
-        while (SDL_PollEvent(&event)) {
-            switch(event.type) {
+        while (SDL_PollEvent(game.getEvent())) {
+            switch(game.getEvent()->type) {
                 case SDL_KEYDOWN:
-                    if(event.key.keysym.sym == SDLK_SPACE && !game.isOver)
+                    if(game.getEvent()->key.keysym.sym == SDLK_SPACE && !game.isOver)
                         game.player.jump();
-                    if(event.key.keysym.sym == SDLK_r) {
+                    if(game.getEvent()->key.keysym.sym == SDLK_r) {
                         game.restart();
                     }
                     break;
                 case SDL_MOUSEBUTTONDOWN:
-                    if (event.button.button == SDL_BUTTON_LEFT && !game.isOver)
+                    if (game.getEvent()->button.button == SDL_BUTTON_LEFT && !game.isOver)
                         game.player.jump();
                     break;
                 case SDL_QUIT:
+                    game.quit();
                     return 0;
                     break;
             }
         }
         game.render();
-        SDL_GL_SwapBuffers();
     }
-    SDL_Quit();
+    game.quit();
     return 0;
 }

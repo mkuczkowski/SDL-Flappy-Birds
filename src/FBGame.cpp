@@ -70,4 +70,9 @@ void FBGame::render() {
     drawBackground();
     checkForCollision(pipes);
     moveAvailableGameObjects();
+    SDL_GL_SwapBuffers();
 }
+
+SDL_Event* FBGame::getEvent() { return &event; }
+
+void FBGame::quit() { SDL_Quit(); }
