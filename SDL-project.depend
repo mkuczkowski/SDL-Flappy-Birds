@@ -30,7 +30,7 @@
 
 1556042316 c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\include\fbgame.h
 
-1556049300 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\fbgame.cpp
+1556188865 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\fbgame.cpp
 	"Column.h"
 	"Pipe.h"
 	"Player.h"
@@ -39,7 +39,7 @@
 	<GL/glu.h>
 	"FBGame.h"
 
-1556052090 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\player.cpp
+1556189124 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\player.cpp
 	"Player.h"
 	<SDL/SDL.h>
 	<GL/gl.h>

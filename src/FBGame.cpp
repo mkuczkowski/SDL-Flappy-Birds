@@ -49,7 +49,7 @@ void FBGame::restart() {
 void FBGame::checkForCollision(Pipe pipe[]) {
     for(int i = 0; i < 100; i++) {
         pipe[i].drawColumns(moveSpeed);
-        if((pipe[i].getBottom().getLeftX() - moveSpeed < player.getLeftX() && pipe[i].getBottom().getRightX() - moveSpeed > player.getLeftX())
+        if((pipe[i].getBottom().getLeftX() - moveSpeed < player.getRightX() && pipe[i].getBottom().getRightX() - moveSpeed > player.getRightX())
         && (player.getBottomY() + player.getPositionY() < pipe[i].getBottom().getTopY() || player.getTopY() + player.getPositionY() > pipe[i].getTop().getBottomY())) {
             gameOver();
         }
@@ -79,6 +79,14 @@ void FBGame::drawBackground() {
         glVertex3f(10, -5, -4.89);
         glVertex3f(10, -5.2, -4.89);
         glVertex3f(-9, -5.2, -4.89);
+    glEnd();
+
+    glColor3f(0.1, 0.7, 0.1);
+    glBegin(GL_QUADS);
+        glVertex3f(-9, -4.8, -5.99);
+        glVertex3f(10, -4.8, -5.99);
+        glVertex3f(10, -8, -5.99);
+        glVertex3f(-9, -8, -5.99);
     glEnd();
 }
 

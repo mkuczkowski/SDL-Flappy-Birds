@@ -5,8 +5,8 @@
 
 Player::Player() {
     positionY = 1.0;
-    setLeftX(-1.2);
-    setRightX(-1.5);
+    setLeftX(-1.5);
+    setRightX(-1.2);
     setTopY(-1.2);
     setBottomY(-1.5);
     jumpHeight = 0.8;
@@ -23,6 +23,23 @@ void Player::draw() {
         glVertex3f(getRightX(), getBottomY() + positionY, -5.0);
         glVertex3f(getLeftX(), getBottomY() + positionY, -5.0);
     glEnd();
+
+    glColor3f(0.8, 0.8, 0.5);
+    glBegin(GL_QUADS);
+        glVertex3f(getLeftX() - 0.15, getTopY() + positionY + 0.1, -5.0);
+        glVertex3f(getLeftX(), getTopY() + positionY, -5.0);
+        glVertex3f(getLeftX(), getBottomY() + positionY, -5.0);
+        glVertex3f(getLeftX() - 0.15, getBottomY() + positionY  + 0.1, -5.0);
+    glEnd();
+
+    glColor3f(0.9, 0.9, 0.5);
+    glBegin(GL_QUADS);
+        glVertex3f(getLeftX() - 0.15, getTopY() + positionY + 0.1, -5.0);
+        glVertex3f(getRightX() - 0.15, getTopY() + positionY + 0.1, -5.0);
+        glVertex3f(getRightX(), getTopY() + positionY, -5.0);
+        glVertex3f(getLeftX(), getTopY() + positionY , -5.0);
+    glEnd();
+
     fallVelocity += 0.000003;
 }
 
