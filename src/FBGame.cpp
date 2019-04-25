@@ -21,8 +21,10 @@ float FBGame::getRandomValue(float minValue, float maxValue) {
 
 void FBGame::assignGaps() {
     for(int i = 0; i < 100; i++) {
-        pipes[i].setupColumns(getRandomValue(1.0, 1.9), i * 3.9);
+        pipes[i].setDistanceBetween(getRandomValue(1.0, 1.9));
+        pipes[i].setupColumns(i * 3.9);
         pipes[i].setHeight(getRandomValue(-1.5, 3.5));
+        pipes[i].assignHeightToColumns();
     }
 }
 
@@ -55,6 +57,11 @@ void FBGame::moveAvailableGameObjects() {
         float newPlayerPosition = player.getPositionY() - player.getFallVelocity();
         player.setPositionY(newPlayerPosition);
         moveSpeed += 0.0015;
+        for(int i = 0; i < 100; i++) {
+            pipes[i].moveVertically();
+            pipes[i].setupColumns(i * 3.9);
+            pipes[i].assignHeightToColumns();
+        }
     }
 }
 

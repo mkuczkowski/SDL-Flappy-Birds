@@ -8,12 +8,21 @@ class Pipe {
         virtual ~Pipe();
         Column getTop();
         Column getBottom();
+        float getDistanceBetween();
+        void setDistanceBetween(float distanceBetween);
+        void setHeight(float height);
         void drawColumns(float moveSpeed);
-        void setupColumns(float distanceBetween, float positionX);
-        void setHeight(float distanceToMove);
+        void setupColumns(float positionX);
+        void assignHeightToColumns();
+        void moveVertically();
     private:
         Column top;
         Column bottom;
+        void toggleVerticalDirection();
+        short movementDirectionVertical;
+        float movementSpeedVertical;
+        float distanceBetween;
+        float height;
 };
 
 #endif // PIPE_H
