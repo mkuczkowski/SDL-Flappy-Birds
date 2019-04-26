@@ -20,18 +20,18 @@
 	"SDLGraphics.h"
 	"Quadrangle.h"
 
-1556201887 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\pipe.cpp
+1556202269 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\pipe.cpp
 	"Column.h"
 	"Pipe.h"
 	<SDL/SDL.h>
 	<GL/gl.h>
 	<GL/glu.h>
 
-1556201887 c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\include\pipe.h
+1556278858 c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\include\pipe.h
 
-1556200341 c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\include\fbgame.h
+1556278697 c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\include\fbgame.h
 
-1556201887 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\fbgame.cpp
+1556278858 source:c:\users\maciejunio\desktop\sdl-project\sdl-flappy-birds\src\fbgame.cpp
 	"Column.h"
 	"Pipe.h"
 	"Player.h"

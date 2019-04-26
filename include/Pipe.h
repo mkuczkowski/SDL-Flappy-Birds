@@ -8,8 +8,8 @@ class Pipe {
         virtual ~Pipe();
         Column getTop();
         Column getBottom();
-        float getDistanceBetween();
-        void setDistanceBetween(float distanceBetween);
+        float getVerticalDistanceBetween();
+        void setVerticalDistanceBetween(float verticalDistanceBetween);
         void setHeight(float height);
         void drawColumns(float moveSpeed);
         void setupColumns(float positionX);
@@ -21,7 +21,7 @@ class Pipe {
         void toggleVerticalDirection();
         short movementDirectionVertical;
         float movementSpeedVertical;
-        float distanceBetween;
+        float verticalDistanceBetween;
         float height;
 };
 

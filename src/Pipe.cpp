@@ -26,8 +26,8 @@ void Pipe::drawColumns(float moveSpeed) {
 }
 
 void Pipe::setupColumns(float positionX) {
-    top.setVertices(4.2 + positionX, 6.2 + positionX, 7.2 + distanceBetween, -1.2 + distanceBetween);
-    bottom.setVertices(4.2 + positionX, 6.2 + positionX, -1.2 - distanceBetween, -9.2 - distanceBetween);
+    top.setVertices(4.2 + positionX, 6.2 + positionX, 7.2 + verticalDistanceBetween, -1.2 + verticalDistanceBetween);
+    bottom.setVertices(4.2 + positionX, 6.2 + positionX, -1.2 - verticalDistanceBetween, -9.2 - verticalDistanceBetween);
 }
 
 void Pipe::assignHeightToColumns() {
@@ -51,10 +51,10 @@ void Pipe::toggleVerticalDirection() {
         movementDirectionVertical = -1;
 }
 
-float Pipe::getDistanceBetween() { return distanceBetween; }
+float Pipe::getVerticalDistanceBetween() { return verticalDistanceBetween; }
 
-void Pipe::setDistanceBetween(float distanceBetween) {
-    this->distanceBetween = distanceBetween;
+void Pipe::setVerticalDistanceBetween(float verticalDistanceBetween) {
+    this->verticalDistanceBetween = verticalDistanceBetween;
 }
 
 void Pipe::setHeight(float height) {

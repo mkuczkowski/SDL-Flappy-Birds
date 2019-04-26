@@ -9,6 +9,7 @@
 FBGame::FBGame() {
     isOver = false;
     moveSpeed = 1.0;
+    distanceBetweenPipes = 3.9;
     SDLGraphics::initialize();
     assignGaps();
 }
@@ -21,8 +22,8 @@ float FBGame::getRandomValue(float minValue, float maxValue) {
 
 void FBGame::assignGaps() {
     for(int i = 0; i < 100; i++) {
-        pipes[i].setDistanceBetween(getRandomValue(1.0, 1.9));
-        pipes[i].setupColumns(i * 3.9);
+        pipes[i].setVerticalDistanceBetween(getRandomValue(1.0, 1.9));
+        pipes[i].setupColumns(i * distanceBetweenPipes);
         pipes[i].setHeight(getRandomValue(-1.5, 3.5));
         pipes[i].assignHeightToColumns();
     }
@@ -42,11 +43,11 @@ void FBGame::restart() {
     assignGaps();
 }
 
-void FBGame::checkForCollision(Pipe pipe[]) {
+void FBGame::checkForCollisions() {
     for(int i = 0; i < 100; i++) {
-        pipe[i].drawColumns(moveSpeed);
-        if((pipe[i].getBottom().getLeftX() - moveSpeed < player.getRightX() && pipe[i].getBottom().getRightX() - moveSpeed > player.getRightX())
-        && (player.getBottomY() + player.getPositionY() < pipe[i].getBottom().getTopY() || player.getTopY() + player.getPositionY() > pipe[i].getTop().getBottomY())) {
+        pipes[i].drawColumns(moveSpeed);
+        if((pipes[i].getBottom().getLeftX() - moveSpeed < player.getRightX() && pipes[i].getBottom().getRightX() - moveSpeed > player.getRightX())
+        && (player.getBottomY() + player.getPositionY() < pipes[i].getBottom().getTopY() || player.getTopY() + player.getPositionY() > pipes[i].getTop().getBottomY())) {
             gameOver();
         }
     }
@@ -59,7 +60,7 @@ void FBGame::moveAvailableGameObjects() {
         moveSpeed += 0.0015;
         for(int i = 0; i < 100; i++) {
             pipes[i].moveVertically();
-            pipes[i].setupColumns(i * 3.9);
+            pipes[i].setupColumns(i * distanceBetweenPipes);
             pipes[i].assignHeightToColumns();
         }
     }
@@ -75,7 +76,7 @@ void FBGame::render() {
     SDLGraphics::renderLoop();
     player.draw();
     drawBackground();
-    checkForCollision(pipes);
+    checkForCollisions();
     moveAvailableGameObjects();
     SDL_GL_SwapBuffers();
 }

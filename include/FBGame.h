@@ -15,9 +15,10 @@ class FBGame: private SDLGraphics {
         SDL_Event event;
         Pipe pipes[100];
         float moveSpeed;
+        float distanceBetweenPipes;
         void gameOver();
         float getRandomValue(float minValue, float maxValue);
-        void checkForCollision(Pipe pipe[]);
+        void checkForCollisions();
         void moveAvailableGameObjects();
         void drawBackground();
         void assignGaps();
