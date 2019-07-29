@@ -7,11 +7,11 @@
 #include "FBGame.h"
 
 FBGame::FBGame() {
-    isOver = false;
-    moveSpeed = 1.0;
-    distanceBetweenPipes = 3.9;
-    SDLGraphics::initialize();
-    assignGaps();
+    this->isOver = false;
+    this->moveSpeed = 1.0;
+    this->distanceBetweenPipes = 3.9;
+    this->SDLGraphics::initialize();
+    this->assignGaps();
 }
 
 FBGame::~FBGame() { }
@@ -22,46 +22,46 @@ float FBGame::getRandomValue(float minValue, float maxValue) {
 
 void FBGame::assignGaps() {
     for(int i = 0; i < 100; i++) {
-        pipes[i].setVerticalDistanceBetween(getRandomValue(1.0, 1.9));
-        pipes[i].setupColumns(i * distanceBetweenPipes);
-        pipes[i].setHeight(getRandomValue(-1.5, 3.5));
-        pipes[i].assignHeightToColumns();
+        this->pipes[i].setVerticalDistanceBetween(getRandomValue(1.0, 1.9));
+        this->pipes[i].setupColumns(i * distanceBetweenPipes);
+        this->pipes[i].setHeight(getRandomValue(-1.5, 3.5));
+        this->pipes[i].assignHeightToColumns();
     }
 }
 
 void FBGame::gameOver() {
     glClearColor(1.0, 0.0, 0.0, 1.0);
-    isOver = true;
+    this->isOver = true;
 }
 
 void FBGame::restart() {
-    player.setPositionY(1.0);
-    moveSpeed = 1.0;
-    player.setFallVelocity(0.0015);
-    isOver = false;
+    this->player.setPositionY(1.0);
+    this->moveSpeed = 1.0;
+    this->player.setFallVelocity(0.0015);
+    this->isOver = false;
     glClearColor(0.1, 0.8, 1.0, 1.0);
-    assignGaps();
+    this->assignGaps();
 }
 
 void FBGame::checkForCollisions() {
     for(int i = 0; i < 100; i++) {
-        pipes[i].drawColumns(moveSpeed);
+        this->pipes[i].drawColumns(this->moveSpeed);
         if((pipes[i].getBottom().getLeftX() - moveSpeed < player.getRightX() && pipes[i].getBottom().getRightX() - moveSpeed > player.getRightX())
         && (player.getBottomY() + player.getPositionY() < pipes[i].getBottom().getTopY() || player.getTopY() + player.getPositionY() > pipes[i].getTop().getBottomY())) {
-            gameOver();
+            this->gameOver();
         }
     }
 }
 
 void FBGame::moveAvailableGameObjects() {
-    if(!isOver) {
-        float newPlayerPosition = player.getPositionY() - player.getFallVelocity();
-        player.setPositionY(newPlayerPosition);
-        moveSpeed += 0.0015;
+    if(!this->isOver) {
+        float newPlayerPosition = this->player.getPositionY() - this->player.getFallVelocity();
+        this->player.setPositionY(newPlayerPosition);
+        this->moveSpeed += 0.0015;
         for(int i = 0; i < 100; i++) {
-            pipes[i].moveVertically();
-            pipes[i].setupColumns(i * distanceBetweenPipes);
-            pipes[i].assignHeightToColumns();
+            this->pipes[i].moveVertically();
+            this->pipes[i].setupColumns(i * this->distanceBetweenPipes);
+            this->pipes[i].assignHeightToColumns();
         }
     }
 }
@@ -73,14 +73,36 @@ void FBGame::drawBackground() {
 }
 
 void FBGame::render() {
-    SDLGraphics::renderLoop();
-    player.draw();
-    drawBackground();
-    checkForCollisions();
-    moveAvailableGameObjects();
+    this->SDLGraphics::renderLoop();
+    this->player.draw();
+    this->drawBackground();
+    this->checkForCollisions();
+    this->moveAvailableGameObjects();
     SDL_GL_SwapBuffers();
 }
 
-SDL_Event* FBGame::getEvent() { return &event; }
-
 void FBGame::quit() { SDL_Quit(); }
+
+void FBGame::start() {
+    while (true) {
+        while (SDL_PollEvent(&this->event)) {
+            switch((&this->event)->type) {
+                case SDL_KEYDOWN:
+                    if((&this->event)->key.keysym.sym == SDLK_SPACE && !this->isOver)
+                        this->player.jump();
+                    if((&this->event)->key.keysym.sym == SDLK_r)
+                        this->restart();
+                    break;
+                case SDL_MOUSEBUTTONDOWN:
+                    if ((&this->event)->button.button == SDL_BUTTON_LEFT && !this->isOver)
+                        this->player.jump();
+                    break;
+                case SDL_QUIT:
+                    this->quit();
+                    return;
+                    break;
+            }
+        }
+        this->render();
+    }
+}

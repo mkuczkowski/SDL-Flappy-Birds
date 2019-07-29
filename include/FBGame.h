@@ -3,16 +3,13 @@
 
 class FBGame: private SDLGraphics {
     public:
-        bool isOver;
-        Player player;
         FBGame();
         virtual ~FBGame();
-        void restart();
-        void render();
-        SDL_Event* getEvent();
-        void quit();
+        void start();
     private:
         SDL_Event event;
+        Player player;
+        bool isOver;
         Pipe pipes[100];
         float moveSpeed;
         float distanceBetweenPipes;
@@ -22,6 +19,9 @@ class FBGame: private SDLGraphics {
         void moveAvailableGameObjects();
         void drawBackground();
         void assignGaps();
+        void quit();
+        void render();
+        void restart();
 };
 
 #endif // FBGAME_H
